@@ -33,7 +33,8 @@ The bash script is located here: [./bin/install_terrafrom_cli](./bin/install_ter
 - This will allow us an easier-to-debug 
 - This will allow better portability for other projects. 
 
-
+#### Gitpod Lifecycle
+We must be careful when using the Init because it will not rerun if we restart an existing workspace.
 https://www.gitpod.io/docs/configure/workspaces/tasks 
 
 #### Shebang
