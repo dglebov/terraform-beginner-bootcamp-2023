@@ -121,18 +121,18 @@ We'll need to generate AWS CLI credentials from IAM user in order to use AWS CLI
 
 ### Terraform Registry
 
-TF sources their providers and modules fromt the Terraform registry which located at [registry terrafom.io](https://registry.Terraform.io/)
+TF sources their providers and modules from the Terraform registry, which located at [registry terrafom.io](https://registry.Terraform.io/)
 
-- **Provider** is interface to APIs that will aloow you to create resoures in TF
-- **Modules** are a way to make ladge amounts of TF code modular, portable and shareble. 
+- **Provider** is an interface to APIs that will allow you to create resources in TF
+- **Modules** are a way to make large amounts of TF code modular, portable and shareable. 
 
 [Random TF provider](https://registry.Terraform.io/providers/hashicorp/random/)
 ## Terraform Console 
 
-We can see a list of all the RF command by typing `Terraform`
+We can see a list of all the RF commands by typing `Terraform`
 
 #### Terraform Init 
-At the start of a new project we will run `Terraform init` to download the binaries for the Terraform providers 
+At the start of a new project, we will run `Terraform init` to download the binaries for the Terraform providers 
 
 #### Terraform Plan 
 `Terraform plan`
@@ -140,26 +140,26 @@ This will generate out a changeset, about the state of our infrastructure and wh
 
 #### Terraform Apply 
 `Terraform apply`
-This will run a plan and pass the changeset to be executed by Terraform. Apply should prompt us yes or nor. 
+This will run a plan and pass the changeset to be executed by Terraform. Apply should prompt us yes or no. 
 
-If we want to automatically approve an apply we can provide auto aprove flag - `Terraform apply --auto-approve`
+If we want to automatically approve an application we can provide auto approve flag - `Terraform apply --auto-approve`
 
 #### Terraform Destroy 
 
 `terraform destroy --auto-approve`
-This will destroy resoures. 
+This will destroy resources. 
 
 #### Terraform Lock Files 
 
 `.terraform.lock.hcl` contains the locked version for the providers or modules that should be used with this project 
 
-The Terrafrom lock file **should be commited** to your Version Control System (VCS) eg. Github
+The Terraform lock file **should be committed** to your Version Control System (VCS) eg. Github
 
 #### Terraform State Files 
 
-`terraform.tfstate` contains infromation about the current state of your infrastructure 
+`terraform.tfstate` contains information about the current state of your infrastructure 
 
-This file **should not be commited** to your VCS
+This file **should not be committed** to your VCS
 
 If you lose this file, you lose knowing the state of your infrastructure
 
