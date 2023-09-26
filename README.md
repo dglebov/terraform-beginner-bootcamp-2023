@@ -144,13 +144,18 @@ This will run a plan and pass the changeset to be executed by Terraform. Apply s
 
 If we want to automatically approve an apply we can provide auto aprove flag - `Terraform apply --auto-approve`
 
-### Terraform Lock Files 
+#### Terraform Destroy 
+
+`terraform destroy --auto-approve`
+This will destroy resoures. 
+
+#### Terraform Lock Files 
 
 `.terraform.lock.hcl` contains the locked version for the providers or modules that should be used with this project 
 
 The Terrafrom lock file **should be commited** to your Version Control System (VCS) eg. Github
 
-### Terraform State Files 
+#### Terraform State Files 
 
 `terraform.tfstate` contains infromation about the current state of your infrastructure 
 
@@ -160,6 +165,6 @@ If you lose this file, you lose knowing the state of your infrastructure
 
 `.terraform.tfstate.backup` is the previous state file state.
 
-### Terrafrom Directory
+#### Terrafrom Directory
 
 `.terrafrom` directory contains binaries of terraform providers.
