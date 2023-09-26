@@ -16,7 +16,7 @@ The general format:
 ### Considerations with the Terraform CLI changes 
 The Terraform CLI installation instructions have changed due to gpg keyring changes. 
 So here are the latest changes:
-[Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli )
+[Install Terraform CLI](https://developer.hashicorp.com/Terraform/tutorials/aws-get-started/install-cli )
 
 ### Considering Linux Distribution
 
@@ -27,7 +27,7 @@ Please consider checking your Linux Distribution and change accordingly:
 ### Refactoring into Bash scripts  
 While fixing the Terraform CLI gpg deprecation issue, we noticed that bash script steps were a considerable amount more code. So we decided to create a bash script to install the Terraform CLI. 
 
-The bash script is located here: [./bin/install_terrafrom_cli](./bin/install_terrafrom_cli.sh)
+The bash script is located here: [./bin/install_Terraform_cli](./bin/install_Terraform_cli.sh)
 
 - This will keep the Gitpod Task Fire tidy ([.gitpod.yml](.gitpod.yml))
 - This will allow us an easier-to-debug 
@@ -109,8 +109,57 @@ If it is successful you should see a JSON payload return:
 {
     "UserId": "AAF24SQ3AS1FYBBJC54OR",
     "Account": "123456789012",
-    "Arn": "arn:aws:iam::123456789012:user/terrafrom-beginner-bootcamp"
+    "Arn": "arn:aws:iam::123456789012:user/Terraform-beginner-bootcamp"
 }
 ```
 
 We'll need to generate AWS CLI credentials from IAM user in order to use AWS CLI
+
+
+
+# Terraform Basics 
+
+### Terraform Registry
+
+TF sources their providers and modules fromt the Terraform registry which located at [registry terrafom.io](https://registry.Terraform.io/)
+
+- **Provider** is interface to APIs that will aloow you to create resoures in TF
+- **Modules** are a way to make ladge amounts of TF code modular, portable and shareble. 
+
+[Random TF provider](https://registry.Terraform.io/providers/hashicorp/random/)
+## Terraform Console 
+
+We can see a list of all the RF command by typing `Terraform`
+
+#### Terraform Init 
+At the start of a new project we will run `Terraform init` to download the binaries for the Terraform providers 
+
+#### Terraform Plan 
+`Terraform plan`
+This will generate out a changeset, about the state of our infrastructure and what will be changed. 
+
+#### Terraform Apply 
+`Terraform apply`
+This will run a plan and pass the changeset to be executed by Terraform. Apply should prompt us yes or nor. 
+
+If we want to automatically approve an apply we can provide auto aprove flag - `Terraform apply --auto-approve`
+
+### Terraform Lock Files 
+
+`.terraform.lock.hcl` contains the locked version for the providers or modules that should be used with this project 
+
+The Terrafrom lock file **should be commited** to your Version Control System (VCS) eg. Github
+
+### Terraform State Files 
+
+`terraform.tfstate` contains infromation about the current state of your infrastructure 
+
+This file **should not be commited** to your VCS
+
+If you lose this file, you lose knowing the state of your infrastructure
+
+`.terraform.tfstate.backup` is the previous state file state.
+
+### Terrafrom Directory
+
+`.terrafrom` directory contains binaries of terraform providers.
