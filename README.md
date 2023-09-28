@@ -168,3 +168,9 @@ If you lose this file, you lose knowing the state of your infrastructure
 #### Terrafrom Directory
 
 `.terrafrom` directory contains binaries of terraform providers.
+
+
+## Issues with Terraform Cloud login and Gitpod 
+
+When attemping to run `terraform login` it will run a shell promp, type `P` and use link to manually generate a token. 
+That pres `q` to exit the shell and past terrafrom token. 
