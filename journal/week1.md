@@ -106,3 +106,40 @@ module "terrahouse_aws" {
   bucket_name = var.bucket_name
 }
 ```
+
+
+
+## Consideration when using ChatGPT
+
+LLMs may not be trained on the latest documentation. May use docs that could be deprecated.
+
+## Working with Files in Terraform
+
+### Fileexists function
+
+This is a built in terraform function to check the existance of a file.
+
+```tf
+condition = fileexists(var.error_html_filepath)
+```
+
+https://developer.hashicorp.com/terraform/language/functions/fileexists
+
+### Filemd5
+
+https://developer.hashicorp.com/terraform/language/functions/filemd5
+
+### Path Variable
+In TF there is a spetial variable called `path` to reference local paths:
+
+- path.module = get the path fro the current module 
+- path.root = get the path for the root module 
+
+[Spetial Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "${path.root}/public/index.html"
+}
+
