@@ -44,3 +44,23 @@ This is the defauls file to load in terraform variables in blunk
 
 ### order of terraform variables 
 
+
+## Terrafrom configuration Drift 
+
+If you lose your state file you most likly have to tear down all your cloud infrastructure manually.
+
+You can use terrafrom port but it won't for all cloud resoures., You need to check provider's documentation for which resoures support import. 
+
+### Fix missing resoures with Terraform Import 
+
+`terraform import aws_s3_bucket.bucket bucket-name`
+
+[Terrafom Import](https://developer.hashicorp.com/terraform/cli/import)
+[AWS S3 Bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
+
+
+### Fix Manual Configuration
+
+If someone goes and deletes or modifies cloud resoures manually through ClickOps 
+
+If we run `Terrafom plan` is with attempt to put our infrastructure bacj into the expected state fixing Configuratio Drift 
