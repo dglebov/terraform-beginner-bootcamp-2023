@@ -22,3 +22,11 @@ variable "assets_path" {
   description = "Path to assets folder"
   type = string
 }
+
+variable "terratowns_token" {
+  type = string
+}
+
+variable "terratowns_endpoint" {
+  type = string
+}
