@@ -41,7 +41,7 @@ Fallout is the RPG from 1997 and it's simply the best. Please try it!
 DESCRIPTION
   domain_name = module.home_fallout_hosting.domain_name
   #  domain_name = "23523gg215.cloudfront.net"
-  town = "missingo"
+  town = "gamers-grotto"
   content_version = var.fallout.content_version
 }
 
@@ -58,6 +58,6 @@ resource "terratowns_home" "Borch" {
 I adore Borch (Slavic red soup, a famous dish in Ukraine). Here is my recipe. 
 DESCRIPTION
   domain_name = module.home_borch_hosting.domain_name
-  town = "missingo"
+  town = "cooker-cove"
   content_version = var.borch.content_version
 }
