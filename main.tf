@@ -5,19 +5,19 @@ terraform {
       version = "1.0.0"
     }
   }
-  #backend "remote" {
+  # backend "remote" {
   #  hostname = "app.terraform.io"
   #  organization = "dglebov_org"#
   #  workspaces {
   #    name = "terra-house-1"
   #  }
-  #}
- # cloud {
- #   organization = "dglebov_org"
- #   workspaces {
- #     name = "terra-house-1"
- #   }
- # }
+  # }
+ cloud {
+   organization = "dglebov_org"
+   workspaces {
+     name = "terra-house-1"
+   }
+ }
 
 }
 
@@ -27,23 +27,37 @@ provider "terratowns" {
   token = var.terratowns_token
 }
 
-module "terrahouse_aws" {
- source = "./modules/terrahouse_aws"
- user_uuid = var.user_uuid
- bucket_name = var.bucket_name
- index_html_filepath = var.index_html_filepath
- error_html_filepath = var.error_html_filepath
- content_version = var.content_version
- assets_path = var.assets_path
+module "home_fallout_hosting" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.user_uuid
+  public_path = var.fallout.public_path
+  content_version = var.fallout.content_version
 }
 
 resource "terratowns_home" "home" {
-  name = "Why Fallous is the best game ever?"
+  name = "Why Fallout is the best game ever?"
   description = <<DESCRIPTION
 Fallout is the RPG from 1997 and it's simply the best. Please try it! 
 DESCRIPTION
-   domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.home_fallout_hosting.domain_name
   #  domain_name = "23523gg215.cloudfront.net"
   town = "missingo"
-  content_version = 1
+  content_version = var.fallout.content_version
+}
+
+module "home_borch_hosting" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.user_uuid
+  public_path = var.borch.public_path
+  content_version = var.borch.content_version
+}
+
+resource "terratowns_home" "Borch" {
+  name = "Making Borch"
+  description = <<DESCRIPTION
+I adore Borch (Slavic red soup, a famous dish in Ukraine). Here is my recipe. 
+DESCRIPTION
+  domain_name = module.home_borch_hosting.domain_name
+  town = "missingo"
+  content_version = var.borch.content_version
 }
